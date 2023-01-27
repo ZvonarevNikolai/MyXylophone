@@ -20,8 +20,14 @@ class ViewController: UIViewController {
     
     @IBAction func keyPressed(_ sender: UIButton) {
     
-        print(sender.currentTitle)
         playSound(soundName: sender.currentTitle!)
+        //Уменьшаем прозрачность кнопки до 0,5
+        sender.alpha = 0.5
+        
+        //Добавляем задержку прозрачности 0,2 сек и возвращаем прозрачность до 1
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            sender.alpha = 1.0
+        }
     }
     
     func playSound(soundName: String) {
